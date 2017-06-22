@@ -1,10 +1,10 @@
 {
   "name": "simgeocode",
   "version": "1.0.0",
-  "description": "A simple node.js geo decoder (name -> address + coordinates), very useful when obtain massive geo coordinates in a batch automatically.",
+  "description": "A simple node.js geo decoder (name -> address/geo coordinates), which is very useful when processing massive geo decoding in a batch",
   "main": "simgeocode.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node getGeoCoords \"Washington DC\""
   },
   "repository": {
     "type": "git",
@@ -13,10 +13,12 @@
   "keywords": [
     "geo",
     "decoder",
+    "coodinates",
+    "massive",
     "batch",
     "google",
-    "service",
-    "automatically"
+    "map",
+    "service"
   ],
   "author": "tibetty",
   "license": "ISC",
