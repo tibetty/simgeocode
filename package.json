@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/tibetty/simgeocode/issues"
   },
-  "homepage": "https://github.com/tibetty/simgeocode#readme"
+  "homepage": "https://github.com/tibetty/simgeocode#readme",
+  "dependencies": {
+    "request": "^2.81.0"
+  }
 }
