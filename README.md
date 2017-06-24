@@ -10,7 +10,7 @@ npm install simgeocode
 
 ## Usage
 ```javascript
-simGeocode(<name of place>, 'en')
+simGeocode('${name_to_geocode}', 'en')
     .then(result => {
         // result.address is the detailed address of the matched result, and result.coordinate is self-explained
         // your code here
@@ -23,5 +23,5 @@ simGeocode(<name of place>, 'en')
 Credits
 ---------------
 
-The crawler depends on the following Node.JS modules:
-* [Request]
+This geocoder depends on the following Node.JS modules:
+* [request]
