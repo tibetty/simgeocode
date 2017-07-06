@@ -11,16 +11,16 @@ npm install simgeocode
 ## Usage
 ```javascript
 // "address" argument can be either the address in string, or an options object (for advanced user only) for request, e.g.
-// {
-//	  url: 'http://maps.googleapis.com/maps/api/geocode/json',
-//    qs: {
-//      address: 'LvBiaoZhen',
-//      language: 'cn'
-//    }
-//    headers: {
-//      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36'
-//    }
-// }
+//  let address = {
+//      url: 'http://maps.googleapis.com/maps/api/geocode/json',
+//      qs: {
+//          address: 'LvBiaoZhen',
+//          language: 'cn'
+//      }
+//      headers: {
+//          'User-Agent': 'triple agent for KGB, CIA & MI6'
+//      }
+//  }
 simGeocode(address, lang)
     .then(result => {
         // result is an object parsed from the json data returned from google map geocode/geodecode service
