@@ -25,8 +25,10 @@ function simGeocode(address, lang) {
 			if (!error && response.statusCode === 200) {
 				let obj = JSON.parse(body);
 				// for backward compatiblity consideration, not recommended
-				obj.address = obj.results[0].formatted_address;
-				obj.coordinate = [obj.results[0].geometry.location.lat, obj.results[0].geometry.location.lng];
+				if (obj.results.length >= 1) {
+					obj.address = obj.results[0].formatted_address;
+					obj.coordinate = [obj.results[0].geometry.location.lat, obj.results[0].geometry.location.lng];
+				}
 				resolve(obj);
 			} else 
 				reject(`Error occured when requesting google map service: ${error || require('http').STATUS_CODES[response.statusCode]}`);
