@@ -1,6 +1,6 @@
 {
   "name": "simgeocode",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple node.js geo decoder (name -> address/geo coordinates), which is very useful when processing massive geo decoding in a batch",
   "main": "simgeocode.js",
   "scripts": {
