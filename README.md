@@ -1,7 +1,7 @@
 simgeocode
 ==========
 
-A simple geo coder (from name to address/coordinates) for node.js, which is very useful when obtain massive geo coordinates in a batch
+A simple promisified geocoder for node.js, which is very useful when you want to obtain massive geo coordinates in a batch
 ## Installation
 
 ```
