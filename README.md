@@ -12,7 +12,7 @@ npm install simgeocode
 ```javascript
 const simGeocode = require('simgeocode');
 
-// "address" argument can be either the address in string, or an options object (for advanced user only) for request, e.g.
+// "address" argument can be either the address in string, or an options object (for advanced users only) for request, e.g.
 //  let address = {
 //      url: 'http://maps.googleapis.com/maps/api/geocode/json',
 //      qs: {
