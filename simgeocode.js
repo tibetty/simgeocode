@@ -8,7 +8,6 @@ function simGeocode(address, lang) {
 	return new Promise((resolve, reject) => {
 		let options = {
 			url: 'http://maps.googleapis.com/maps/api/geocode/json',
-			'Accept-Language': 'en-US;q=1',
 			headers: {
 				'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36'
 			}
@@ -19,7 +18,13 @@ function simGeocode(address, lang) {
 				address: address,
 				language: lang
 			};
-		} else Object.assign(options, address);
+		} else {
+			Object.assign(options, address);
+			if ((!options.qs || !options.qs.address) && 
+				!/^http:\/\/maps\.googleapis\.com\/maps\/api\/geocode\/json\?.*?address=[^&]+/.exec(options.url)) {
+				return reject(`Error with request object: bad service url or no address`);
+			}
+		}
 		
 		request(options, (error, response, body) => {
 			if (!error && response.statusCode === 200) {
@@ -31,7 +36,7 @@ function simGeocode(address, lang) {
 				}
 				resolve(obj);
 			} else 
-				reject(`Error occured when requesting google map service: ${error || require('http').STATUS_CODES[response.statusCode]}`);
+				reject(`Error occured when requesting google service: ${error || require('http').STATUS_CODES[response.statusCode]}`);
 		});
 	});
 }

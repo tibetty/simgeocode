@@ -5,10 +5,15 @@ const simGeocode = require('./simgeocode.js'),
 	path = require('path');
 	
 if (process.argv.length >= 3) {
-	simGeocode(process.argv[2], 'en')
+	simGeocode({
+		url: `http://maps.googleapis.com/maps/api/geocode/json`,
+		qs: {
+			address: process.argv[2],
+			language: 'zh-CN'
+		}
+	})
 	.then(result => {
 		console.log(result.address);
-		console.log([result.coordinate[1],result.coordinate[0]]);
 		console.log(result.coordinate);
 	}).catch(err => {
 		console.error(err.toString());
