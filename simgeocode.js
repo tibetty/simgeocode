@@ -1,13 +1,12 @@
 #!/usr/bin/env node
 'use strict';
 
-const request = require('request');
-
-function simGeocode(address, lang) {
+module.exports = (address, lang) => {
 	let hl = lang || 'en';
 	return new Promise((resolve, reject) => {
 		let options = {
 			url: 'http://maps.googleapis.com/maps/api/geocode/json',
+			timeout: 3000,
 			headers: {
 				'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36'
 			}
@@ -17,7 +16,7 @@ function simGeocode(address, lang) {
 			options.qs = {
 				address: address,
 				language: lang
-			};
+			}
 		} else {
 			Object.assign(options, address);
 			if ((!options.qs || !options.qs.address) && 
@@ -26,13 +25,13 @@ function simGeocode(address, lang) {
 			}
 		}
 		
-		request(options, (error, response, body) => {
+		require('request')(options, (error, response, body) => {
 			if (!error && response.statusCode === 200) {
 				let obj = JSON.parse(body);
 				// for backward compatiblity consideration, not recommended
 				if (obj.results.length >= 1) {
 					obj.address = obj.results[0].formatted_address;
-					obj.coordinate = [obj.results[0].geometry.location.lat, obj.results[0].geometry.location.lng];
+					obj.coordinates = obj.coordinate = [obj.results[0].geometry.location.lat, obj.results[0].geometry.location.lng];
 				}
 				resolve(obj);
 			} else 
@@ -40,5 +39,3 @@ function simGeocode(address, lang) {
 		});
 	});
 }
-
-module.exports = simGeocode;

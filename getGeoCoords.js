@@ -14,7 +14,7 @@ if (process.argv.length >= 3) {
 	})
 	.then(result => {
 		console.log(result.address);
-		console.log(result.coordinate);
+		console.log(result.coordinates);
 	}).catch(err => {
 		console.error(err.toString());
 	});
