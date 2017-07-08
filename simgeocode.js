@@ -23,9 +23,10 @@ module.exports = (address, lang) => {
 				!/^http:\/\/maps\.googleapis\.com\/maps\/api\/geocode\/json\?.*?address=[^&]+/.exec(options.url)) {
 				return reject(`Error with request object: bad service url or no address`);
 			}
-			Object.assign(options, {qs: {language: lang}});
+			if (options.qs) options.qs.language = lang;
+			else options.qs = {language: lang};
 		}
-		
+
 		require('request')(options, (error, response, body) => {
 			if (!error && response.statusCode === 200) {
 				let obj = JSON.parse(body);

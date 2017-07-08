@@ -6,12 +6,8 @@ const simGeocode = require('./simgeocode.js'),
 	
 if (process.argv.length >= 3) {
 	simGeocode({
-		url: `http://maps.googleapis.com/maps/api/geocode/json`,
-		qs: {
-			address: process.argv[2],
-			language: 'zh-CN'
-		}
-	})
+		url: `http://maps.googleapis.com/maps/api/geocode/json?address=${process.argv[2]}&language=en`
+	}, 'zh-CN')
 	.then(result => {
 		console.log(result.address);
 		console.log(result.coordinates);
