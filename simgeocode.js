@@ -2,7 +2,7 @@
 'use strict';
 
 module.exports = (address, lang) => {
-	let hl = lang || 'en';
+	lang = lang || 'en';
 	return new Promise((resolve, reject) => {
 		let options = {
 			url: 'http://maps.googleapis.com/maps/api/geocode/json',
@@ -23,6 +23,7 @@ module.exports = (address, lang) => {
 				!/^http:\/\/maps\.googleapis\.com\/maps\/api\/geocode\/json\?.*?address=[^&]+/.exec(options.url)) {
 				return reject(`Error with request object: bad service url or no address`);
 			}
+			Object.assign(options, {qs: {language: lang}});
 		}
 		
 		require('request')(options, (error, response, body) => {
